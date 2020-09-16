@@ -9,6 +9,14 @@ module.exports = function (sequelize, DataTypes) {
                 isEmail: true
             }
         },
+        symbol: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+        stockName: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
         date: {
             type: DataTypes.DATEONLY,
             allowNull: false
@@ -28,10 +36,8 @@ module.exports = function (sequelize, DataTypes) {
     });
     // Method stored on Data model checks if currently logged-in user (email) matches the "email" field of the current row
     saveData.prototype.isCurrentUser = (user) => {
-        if (this.email === user) {
-            return true;
-        } else return false;
-    };
+        return this.email === user;
+    }
 
     return saveData;
 };
