@@ -71,7 +71,7 @@ module.exports = function (app) {
   // Route for reading User's favorite stocks
   app.get("/api/favoriteStocks", (req, res) => {
     db.FavoriteStock.findAll({
-      attributes: [stockName, symbol],
+      attributes: ["stockName", "symbol"],
       where: {
         email: req.body.email
       }
@@ -99,6 +99,18 @@ module.exports = function (app) {
     }
   }).then(() => {
     res.status(200);
+  })
+
+  // Route for reading User's saveData
+  app.get("api/saveData", (req, res) => {
+    db.SaveData.findAll({
+      attributes: ["symbol", "stockName", "date", "open", "close", "volume"],
+      where: {
+        email: req.body.email
+      }
+    }).then((results) => {
+      res.json(results);
+    })
   })
 
 };
