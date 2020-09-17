@@ -1,4 +1,4 @@
-const apiKey = "H1WZOIEMOXEW1Z2H";
+const apiKey = null;
 $("#submit").on("click", function () {
     let companySearch;
     companySearch = $("#input").val();

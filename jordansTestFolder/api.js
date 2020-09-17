@@ -6,7 +6,7 @@ $("#submit").on("click", function () {
 })
 
 function stockSearch(symbol) {
-    const apiKey = "H1WZOIEMOXEW1Z2H";
+    const apiKey = null;
 
     $.ajax({
         url: "https://www.alphavantage.co/query?function=OVERVIEW&symbol=" + symbol + "&apikey=" + apiKey,

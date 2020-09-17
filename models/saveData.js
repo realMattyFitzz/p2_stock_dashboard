@@ -1,6 +1,6 @@
 // Model for Data table
 module.exports = function (sequelize, DataTypes) {
-    const saveData = sequelize.define("saveData", {
+    const SaveData = sequelize.define("SaveData", {
         email: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -18,26 +18,26 @@ module.exports = function (sequelize, DataTypes) {
             allowNull: false
         },
         date: {
-            type: DataTypes.DATEONLY,
+            type: DataTypes.STRING,
             allowNull: false
         },
         open: {
-            type: DataTypes.DECIMAL,
+            type: DataTypes.STRING,
             allowNull: false
         },
         close: {
-            type: DataTypes.DECIMAL,
+            type: DataTypes.STRING,
             allowNull: false
         },
         volume: {
-            type: DataTypes.DECIMAL,
+            type: DataTypes.STRING,
             allowNull: false
         }
     });
     // Method stored on Data model checks if currently logged-in user (email) matches the "email" field of the current row
-    saveData.prototype.isCurrentUser = (user) => {
+    SaveData.prototype.isCurrentUser = (user) => {
         return this.email === user;
     }
 
-    return saveData;
+    return SaveData;
 };
