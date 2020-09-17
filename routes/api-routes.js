@@ -2,7 +2,7 @@
 const db = require("../models");
 const passport = require("../config/passport");
 
-module.exports = function(app) {
+module.exports = function (app) {
   // Using the passport.authenticate middleware with our local strategy.
   // If the user has valid login credentials, send them to the members page.
   // Otherwise the user will be sent an error
@@ -50,4 +50,67 @@ module.exports = function(app) {
       });
     }
   });
+
+  // Route for saving User's favorite stocks
+  app.post("/api/favoriteStocks", (req, res) => {
+    // If no data is sent, return a 400 error
+    if (!req.body) {
+      res.status(400);
+      // Else, post the body of the request to the 'FavoriteStock' table
+    } else {
+      db.FavoriteStock.create({
+        email: req.body.email,
+        symbol: req.body.symbol,
+        stockName: req.body.stockName
+      }).then(() => {
+        res.status(200);
+      })
+    }
+  })
+
+  // Route for reading User's favorite stocks
+  app.get("/api/favoriteStocks", (req, res) => {
+    db.FavoriteStock.findAll({
+      attributes: ["stockName", "symbol"],
+      where: {
+        email: req.body.email
+      }
+    }).then((results) => {
+      res.json(results);
+    })
+  })
+
+  // Route for saving saveData
+  app.post("/api/saveData", (req, res) => {
+    // If no data is sent, return a 400 error
+    if (!req.body) {
+      res.status(400);
+      // Else, post body of request to SaveData table
+    } else {
+      db.SaveData.create({
+        email: req.body.email,
+        symbol: req.body.symbol,
+        stockName: req.body.stockName,
+        date: req.body.data,
+        open: req.body.open,
+        close: req.body.close,
+        volume: req.body.volume
+      })
+    }
+  }).then(() => {
+    res.status(200);
+  })
+
+  // Route for reading User's saveData
+  app.get("api/saveData", (req, res) => {
+    db.SaveData.findAll({
+      attributes: ["symbol", "stockName", "date", "open", "close", "volume"],
+      where: {
+        email: req.body.email
+      }
+    }).then((results) => {
+      res.json(results);
+    })
+  })
+
 };
