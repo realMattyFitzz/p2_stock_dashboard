@@ -1,4 +1,63 @@
 form.signup,
 form.login {
   margin-top: 50px;
+  
 }
+h1 {
+  color: white;
+  text-align: center;
+  font-family: 'Roboto Mono', monospace;
+}
+
+i {
+  color: lime;
+}
+
+body {
+  background: black;
+  margin-top: 5%;
+  font-family: 'Roboto Mono', monospace;
+}
+
+h2 {
+  color: white;
+  font-family: 'Roboto Mono', monospace;
+  font-size: large
+  
+}
+.logout {
+  text-decoration: underline;
+  color: red;
+}
+.navbar {
+  padding-left: 5%;
+  margin-top: 1%;
+  
+}
+h3 {
+  color: white;
+  font-size: 40px;
+}
+
+label {
+  color: white;
+  font-family: 'Roboto Mono', monospace;
+}
+
+p {
+  color: grey
+}
+
+.logout {
+  
+  margin-left: 80%;
+  
+}
+
+footer {
+  text-align: center;
+  font-size: 10px;
+}
+
+
+
