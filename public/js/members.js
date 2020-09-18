@@ -1,81 +1,103 @@
-$(document).ready(() => {
-  // This file just does a GET request to figure out which user is logged in
-  // and updates the HTML on the page
-  $.get("/api/user_data").then(data => {
-    $(".member-name").text(data.email);
-  });
-});
+console.log("linked!")
 
-
-console.log("Connected!")
-
-const apiKey1 = "UVV1OIJYR1HSOP3Z";
-const apiKey2= "VOHNJ8AEVGUI9HYK"
-let monthArray = [];
-
-$("#submit").on("click", function () {
-  let companySearch;
-  companySearch = $("#input").val();
-  $.ajax({
-    url: "https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=" + companySearch + "&apikey=" + apiKey1,
-    method: "GET"
-  }).then(function(response){
-    const companies = response.bestMatches;
-    companies.forEach((company) => {
-     const $btn = $("<button>")
-     .text(company["2. name"])
-     .addClass("btn btn-dark compButton")
-     .attr("data-symbol", company["1. symbol"]);
-    
-    $("#companyBtns").append($btn);  
+function sanitizeStockData(stocks) {
+  const stockData = {};
+  for (date in stocks) {
+    const stock = stocks[date];
+    //moment gives us the current month
+    const month = moment(date).format("MMMM");
+    // If month does not exist in stockData set it to empty array
+    if (stockData[month] === undefined) {
+      stockData[month] = [];
+    }
+    stockData[month].push({
+      open: +stock["1. open"],
+      high: +stock["2. high"],
+      low: +stock["3. low"],
+      close: +stock["4. close"],
+      volume: +stock["5. volume"],
+      date: date,
     });
-  }); 
-});
+  }
+  return stockData;
+}
 
-$("#companyBtns").on("click", ".compButton", function (e){
-  e.preventDefault();
-  const companySymbol = ($(this).attr("data-symbol"))
-  console.log(companySymbol);
+const config = {
+  type: "line",
+  data: {
+    labels: [],
+    datasets: [],
+  },
+  options: {
+    responsive: true,
+    title: {
+      display: true,
+      text: "Chart.js Line Chart",
+    },
+    tooltips: {
+      mode: "index",
+      intersect: false,
+    },
+    hover: {
+      mode: "nearest",
+      intersect: true,
+    },
+    scales: {
+      xAxes: [
+        {
+          display: true,
+          scaleLabel: {
+            display: true,
+            labelString: "Month",
+          },
+        },
+      ],
+      yAxes: [
+        {
+          display: true,
+          scaleLabel: {
+            display: true,
+            labelString: "Value",
+          },
+        },
+      ],
+    },
+  },
+};
+
+function cb(){
   $.ajax({
-    url: "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=" + companySymbol + "&apikey=" +apiKey2,
-    method: "GET"
-  }).then(function(response){
-    const date = response["Time Series (Daily)"]
-    
-    for (const key in date) {
-        let month = parseInt(key.slice(5, 7))
-        //set wont allow duplicate valuse
-        if(month === 1){
-          month = "January"
-        } else if(month === 2){
-          month = "February"
-        } else if (month === 3){
-          month = "March"
-        } else if (month === 4){
-          month = "April"
-        } else if (month === 5){
-          month = "May"
-        } else if (month === 6){
-          month = "June"
-        } else if (month === 7){
-          month = "July"
-        } else if (month === 8){
-          month = "August"
-        } else if (month === 9){
-          month = "September"
-        } else if (month === 10){
-          month = "October"
-        } else if (month === 11){
-          month = "November"
-        } else if (month === 12){
-          month = "December"
-        }
-        console.log(month)
-        
-      }
-      monthArray.push(month)
-      console.log(monthArray)
+    url: "/api/stocks",
+    method: "GET",
+  }).then(function (response) {
+    console.log(response)
+    const stocks = response["Time Series (Daily)"];
+    const stockData = sanitizeStockData(stocks);
+    const labels = Object.keys(stockData).reverse();
+  
+    const vals = labels.map((month) => {
       
-    })
+      const stocks = stockData[month];
+  
+      const averageCloseValue =
+        stocks.reduce((x, y) => ({ close: x.close + y.close }), {
+          close: 0,
+        }).close / stocks.length;
+  
+      return averageCloseValue.toFixed(2);
+    });
+  
+    const ctx = document.getElementById("canvas").getContext("2d");
+    config.data.labels = labels;
+    config.data.datasets.push({
+      label: "Microsoft",
+      backgroundColor: window.chartColors.red,
+      borderColor: window.chartColors.red,
+      data: vals,
+      fill: false,
+    });
+    window.myLine = new Chart(ctx, config);
+  });
 
-  })
+};
+cb()

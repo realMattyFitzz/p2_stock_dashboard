@@ -1,32 +1,35 @@
 {
-    "name": "p2_stock_dashboard",
-    "version": "1.0.0",
-    "description": "",
-    "main": "server.js",
-    "scripts": {
-      "test": "echo \"Error: no test specified\" && exit 1",
-      "start": "node server.js"
-    },
-    "repository": {
-      "type": "git",
-      "url": "git+https://github.com/jmuncrief/p2_stock_dashboard.git"
-    },
-    "keywords": [],
-    "author": "",
-    "license": "ISC",
-    "bugs": {
-      "url": "https://github.com/jmuncrief/p2_stock_dashboard/issues"
-    },
-    "homepage": "https://github.com/jmuncrief/p2_stock_dashboard#readme",
-    "dependencies": {
-      "bcryptjs": "^2.4.3",
-      "express": "^4.17.1",
-      "express-session": "^1.17.1",
-      "mysql2": "^2.1.0",
-      "passport": "^0.4.1",
-      "passport-local": "^1.0.0",
-      "path": "^0.12.7",
-      "sequelize": "^6.3.5"
-    }
+  "name": "p2_stock_dashboard",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jmuncrief/p2_stock_dashboard.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jmuncrief/p2_stock_dashboard/issues"
+  },
+  "homepage": "https://github.com/jmuncrief/p2_stock_dashboard#readme",
+  "dependencies": {
+    "axios": "^0.20.0",
+    "bcryptjs": "^2.4.3",
+    "express": "^4.17.1",
+    "express-handlebars": "^5.1.0",
+    "express-session": "^1.17.1",
+    "fs": "0.0.1-security",
+    "mysql": "^2.18.1",
+    "mysql2": "^2.2.1",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0",
+    "path": "^0.12.7",
+    "sequelize": "^6.3.5"
   }
-  
+}
