@@ -80,6 +80,18 @@ module.exports = function (app) {
     })
   })
 
+  // Route to delete a favorite stock, keyed to username(email) and stock symbol
+  app.delete("/api/favoriteStocks", (req, res) => {
+    db.FavoriteStock.destroy({
+      where: { 
+        email: req.body.email,
+        symbol: req.body.symbol
+      }
+    }).then(() => {
+      res.status(200);
+    })
+  })
+
   // Route for saving saveData
   app.post("/api/saveData", (req, res) => {
     // If no data is sent, return a 400 error
@@ -95,10 +107,10 @@ module.exports = function (app) {
         open: req.body.open,
         close: req.body.close,
         volume: req.body.volume
+      }).then(() => {
+        res.status(200);
       })
     }
-  }).then(() => {
-    res.status(200);
   })
 
   // Route for reading User's saveData
