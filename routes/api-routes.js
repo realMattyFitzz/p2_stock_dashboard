@@ -71,12 +71,25 @@ module.exports = function (app) {
   // Route for reading User's favorite stocks
   app.get("/api/favoriteStocks", (req, res) => {
     db.FavoriteStock.findAll({
-      attributes: ["stockName", "symbol"],
+       attributes: ["stockName", "symbol"],
       where: {
         email: req.body.email
       }
     }).then((results) => {
       res.json(results);
+      res.render("members", )
+    })
+  })
+
+  // Route to delete a favorite stock, keyed to username(email) and stock symbol
+  app.delete("/api/favoriteStocks", (req, res) => {
+    db.FavoriteStock.destroy({
+      where: { 
+        email: req.body.email,
+        symbol: req.body.symbol
+      }
+    }).then(() => {
+      res.status(200);
     })
   })
 
