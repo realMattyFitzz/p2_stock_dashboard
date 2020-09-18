@@ -2,3 +2,48 @@ form.signup,
 form.login {
   margin-top: 50px;
 }
+
+body {
+  background: black;
+}
+
+h1 {
+  margin-top: 40px;
+  margin-left: 20px;
+  color: #eee;
+}
+
+h2 {
+  margin-top: 40px;
+  margin-left: 20px;
+  color: #eee;
+}
+
+.member-name {
+  color: #eee;
+}
+
+label {
+  color: #eee;
+}
+
+p {
+  color: #eee;
+}
+
+#search-bar {
+  margin-left: 20px;
+}
+
+.menu {
+  margin-top: 20px;
+  margin-left: 20px;
+}
+
+.card-img-top {
+  padding: 50px;
+}
+
+.card {
+  margin-top: 20px;
+}
