@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stocks Graph</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="stylesheets/style.css" />
+  </head>
+  <body>
+    <div class="container-fluid">
+      <header>
+        <h1>Get Stocked!!!!</h1>
+      </header>
+      <div class="row">
+        <div class="col-lg-3">
+          <div class = "row">
+            <button id = "submit" class = "btn btn-dark">Submit</button>
+            <input
+              id = "input"
+              class="form-control"
+              type="search"
+              placeholder="Search"
+              aria-label="Search"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-3">
+          <div class="menu">
+            <ul class="list-group">
+              <div id = "companyBtns"></div>
+              <!-- <li class="list-group-item">Trending</li>
+              <li class="list-group-item">Your Stocks</li>
+              <li class="list-group-item">Random</li> -->
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-9">
+          <div class="card">
+            
+            <div class="card-body">
+              <div style="width: 75%">
+                <canvas id="canvas"></canvas>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            
+            <div class="card-body">
+              <p class="card-text">
+               Company Details go here
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script scr = "/js/members.js"></script>
+  </body>
+</html>
