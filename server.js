@@ -4,7 +4,9 @@ const session = require("express-session");
 const exphbs = require("express-handlebars");
 // Requiring passport as we've configured it
 const passport = require("./config/passport");
-
+const fs = require("fs");
+const path = require("path");
+const dataPath = path.join(__dirname, "/data");
 // Setting up port and requiring models for syncing
 const PORT = process.env.PORT || 8080;
 const db = require("./models");
@@ -28,6 +30,21 @@ app.set("view engine", "handlebars");
 // Requiring our routes
 require("./routes/html-routes.js")(app);
 require("./routes/api-routes.js")(app);
+
+app.get("/api/symbols", async function (req, res) {
+  res.setHeader("Content-Type", "application/json");
+  fs.createReadStream(path.resolve(dataPath, "symbol_search.json")).pipe(res);
+});
+
+app.get("/api/stocks", async function (req, res) {
+  res.setHeader("Content-Type", "application/json");
+  fs.createReadStream(path.resolve(dataPath, "company_stock.json")).pipe(res);
+});
+
+app.get("/api/details", async function (req, res) {
+  res.setHeader("Content-Type", "application/json");
+  fs.createReadStream(path.resolve(dataPath, "company_details.json")).pipe(res);
+});
 
 // Syncing our database and logging a message to the user upon success
 db.sequelize.sync().then(() => {
