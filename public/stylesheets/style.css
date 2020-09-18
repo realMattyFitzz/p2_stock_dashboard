@@ -4,6 +4,7 @@ form.login {
   
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 h1 {
   color: white;
   text-align: center;
@@ -63,16 +64,35 @@ footer {
 
 
 =======
+canvas {
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+body {
+  background: black;
+}
+​
+>>>>>>> f4380f7d5694648007f52e7d9bf8085b45037d16
+=======
 
 body {
   background: black;
 }
 
+>>>>>>> 1703b9666b138400dd364af31b3fd7bedceb1bf0
 h1 {
   margin-top: 40px;
   margin-left: 20px;
   color: #eee;
 }
+<<<<<<< HEAD
+​
+.form-control {
+  margin-left: 20px;
+}
+​
+=======
 
 h2 {
   margin-top: 40px;
@@ -96,10 +116,24 @@ p {
   margin-left: 20px;
 }
 
+>>>>>>> 1703b9666b138400dd364af31b3fd7bedceb1bf0
 .menu {
   margin-top: 20px;
   margin-left: 20px;
 }
+<<<<<<< HEAD
+​
+.card-img-top {
+  padding: 50px;
+}
+​
+.card{
+    margin-top: 20px;
+}
+#input{
+  width: 285px;
+}
+=======
 
 .card-img-top {
   padding: 50px;
