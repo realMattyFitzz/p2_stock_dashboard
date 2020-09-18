@@ -10,13 +10,9 @@ module.exports = function (app) {
     if (req.user) {
       res.redirect("/members");
     }
-<<<<<<< HEAD
-    res.sendFile(path.join(__dirname, "../views/partials/signup.handlebars"));
-=======
     res.render("login", { 
       scriptSrc: "login" 
     });
->>>>>>> 1703b9666b138400dd364af31b3fd7bedceb1bf0
   });
 
   app.get("/login", (req, res) => {
@@ -24,9 +20,6 @@ module.exports = function (app) {
     if (req.user) {
       res.redirect("/members");
     }
-<<<<<<< HEAD
-    res.sendFile(path.join(__dirname, "../views/partials/login.handlebars"));
-=======
     res.render("login", { 
       scriptSrc: "login" 
     });
@@ -41,7 +34,6 @@ module.exports = function (app) {
       signup: true,
       scriptSrc: "signup" 
     });
->>>>>>> 1703b9666b138400dd364af31b3fd7bedceb1bf0
   });
 
   // Here we've add our isAuthenticated middleware to this route.
