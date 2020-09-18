@@ -71,12 +71,13 @@ module.exports = function (app) {
   // Route for reading User's favorite stocks
   app.get("/api/favoriteStocks", (req, res) => {
     db.FavoriteStock.findAll({
-      attributes: ["stockName", "symbol"],
+       attributes: ["stockName", "symbol"],
       where: {
         email: req.body.email
       }
     }).then((results) => {
       res.json(results);
+      res.render("members", )
     })
   })
 
@@ -95,10 +96,10 @@ module.exports = function (app) {
         open: req.body.open,
         close: req.body.close,
         volume: req.body.volume
+      }).then(() => {
+        res.status(200);
       })
     }
-  }).then(() => {
-    res.status(200);
   })
 
   // Route for reading User's saveData
