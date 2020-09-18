@@ -95,10 +95,10 @@ module.exports = function (app) {
         open: req.body.open,
         close: req.body.close,
         volume: req.body.volume
+      }).then(() => {
+        res.status(200);
       })
     }
-  }).then(() => {
-    res.status(200);
   })
 
   // Route for reading User's saveData
