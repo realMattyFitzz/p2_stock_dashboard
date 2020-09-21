@@ -27,6 +27,7 @@ $(document).ready(function(){
 });
 
 $("#companyBtns").on("click", ".compButton", function (e) { 
+  $("#saveBtn").html("");
   e.preventDefault();
   const companySymbol = ($(this).attr("data-symbol"));
   const companyName = ($(this).attr("data-name"));
@@ -78,15 +79,16 @@ $("#companyBtns").on("click", ".compButton", function (e) {
     saveBtn.attr("data-saveToFavoritsCS", companySymbol)
     saveBtn.attr("data-saveToFavoritsCT", companyType)
     saveBtn.attr("data-saveToFavoritsCC", companyCurrency)
+
     $("#saveBtn").append(saveBtn)
-    
     
   });
   
 })
 
 $("#saveBtn").on("click", ".saveToFavorites", function(e){
-  e.preventDefault();
+  $("#companyBtns").html("");
+  $("#saveBtn").html("");
   const companyName = ($(this).attr("data-saveToFavoritsCN"));
   const companySymbol = ($(this).attr("data-saveToFavoritsCS"));
   const companyType = ($(this).attr("data-saveToFavoritsCT"))
@@ -105,15 +107,13 @@ $("#saveBtn").on("click", ".saveToFavorites", function(e){
     $.ajax("/api/favoriteStocks", {
       type: "POST",
       data: newStockSave
-    }).then(function(response){
+    }).then(function(){
     })
-    
-  })
-  
+  }) 
+  location.reload();
 });
 
 $("#savedBtns").on("click", ".savedInfoPull", function(e){
-  $("#saveBtn").html("");
   e.preventDefault()
   const companyName = ($(this).attr("data-renderFavoritesCN"));
   const companySymbol = ($(this).attr("data-renderFavoritesCS"));
@@ -173,24 +173,13 @@ $("#deleteBtn").on("click", ".deleteFromFavorites", function(e){
   e.preventDefault();
   const companyName = ($(this).attr("data-deleteFromFavoritsCN"));
   console.log(companyName);
-
-  // $.get("/api/favoriteStocks").then(function(data){
-  //   console.log(data)
-    
-    // $.each(data, function(index, value){
-    //   let id = data[index].id;
-    //   let companyName = data[index].stockName;
-    // })
-    
-    $.ajax("/api/favoriteStocks/" + companyName, {
-      method: "DELETE",
-    }).then(function(){
-      console.log("You have successfully deleted " + companyName + "from favorites!")
-    })
-  //})
-
-  
-
+      
+      $.ajax("/api/favoriteStocks/" + companyName, {
+        method: "DELETE",
+      }).then(function(){
+        
+      })
+      location.reload();
 });
 
 function appendSavedBtns(){

@@ -96,37 +96,6 @@ module.exports = function (app) {
     })
   })
 
-  // Route for saving saveData
-  app.post("/api/saveData", (req, res) => {
-    // If no data is sent, return a 400 error
-    if (!req.body) {
-      res.status(400);
-      // Else, post body of request to SaveData table
-    } else {
-      db.SaveData.create({
-        email: req.body.email,
-        symbol: req.body.symbol,
-        stockName: req.body.stockName,
-        date: req.body.data,
-        open: req.body.open,
-        close: req.body.close,
-        volume: req.body.volume
-      }).then(() => {
-        res.status(200);
-      })
-    }
-  })
 
-  // Route for reading User's saveData
-  app.get("api/saveData", (req, res) => {
-    db.SaveData.findAll({
-      attributes: ["symbol", "stockName", "date", "open", "close", "volume"],
-      where: {
-        email: req.body.email
-      }
-    }).then((results) => {
-      res.json(results);
-    })
-  })
 
 };

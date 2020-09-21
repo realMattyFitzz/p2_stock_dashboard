@@ -15,20 +15,16 @@ body {
   margin-left: 20px;
   color:white;
 }
-​
 .form-control {
   margin-left: 20px;
 }
-​
 .menu {
   margin-top: 20px;
   margin-left: 20px;
 }
-​
 .card-img-top {
   padding: 50px;
 }
-​
 .card{
     margin-top: 20px;
 }
@@ -37,4 +33,11 @@ body {
 }
 #savedBtns{
   color: white;
+}
+.btn-group{
+  display: block;
+  text-align: center;
+}
+.btn-group button:not(:last-child) {
+  border-bottom: none; /* Prevent double borders */
 }
