@@ -1,6 +1,6 @@
 $(document).ready(() => {
   // Getting references to our form and input
-  const signUpForm = $("form.signup");
+  const signUpForm = $("form.login");
   const emailInput = $("input#email-input");
   const passwordInput = $("input#password-input");
 
@@ -24,7 +24,7 @@ $(document).ready(() => {
   // Does a post to the signup route. If successful, we are redirected to the members page
   // Otherwise we log any errors
   function signUpUser(email, password) {
-    $.post("/api/signup", {
+    $.post("/api/signup/", {
       email: email,
       password: password
     })

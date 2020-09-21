@@ -59,21 +59,25 @@ module.exports = function (app) {
       // Else, post the body of the request to the 'FavoriteStock' table
     } else {
       db.FavoriteStock.create({
-        email: req.body.email,
+        emails: req.body.emails,
         symbol: req.body.symbol,
-        stockName: req.body.stockName
+        stockName: req.body.stockName,
+        stockType: req.body.stockType,
+        stockCurrency: req.body.stockCurrency
       }).then(() => {
         res.status(200);
-      })
+      }).catch((err) => {
+        console.log(err)
+        res.status(401).json(err);
+    });
     }
   })
 
   // Route for reading User's favorite stocks
   app.get("/api/favoriteStocks", (req, res) => {
     db.FavoriteStock.findAll({
-       attributes: ["stockName", "symbol"],
       where: {
-        email: req.body.email
+        emails: req.user.email
       }
     }).then((results) => {
       res.json(results);
@@ -85,7 +89,7 @@ module.exports = function (app) {
   app.delete("/api/favoriteStocks", (req, res) => {
     db.FavoriteStock.destroy({
       where: { 
-        email: req.body.email,
+        emails: req.body.emails,
         symbol: req.body.symbol
       }
     }).then(() => {
@@ -97,7 +101,7 @@ module.exports = function (app) {
   app.delete("/api/favoriteStocks", (req, res) => {
     db.FavoriteStock.destroy({
       where: { 
-        email: req.body.email,
+        emails: req.body.emails,
         symbol: req.body.symbol
       }
     }).then(() => {

@@ -2,7 +2,6 @@ form.signup,
 form.login {
   margin-top: 50px;
 }
-<<<<<<< HEAD
 canvas {
   -moz-user-select: none;
   -webkit-user-select: none;
@@ -11,55 +10,20 @@ canvas {
 body {
   background: black;
 }
-​
-=======
-
-body {
-  background: black;
-}
-
->>>>>>> 1703b9666b138400dd364af31b3fd7bedceb1bf0
-h1 {
+​#pageTitle{
   margin-top: 40px;
   margin-left: 20px;
-  color: #eee;
+  color:white;
 }
-<<<<<<< HEAD
 ​
 .form-control {
   margin-left: 20px;
 }
 ​
-=======
-
-h2 {
-  margin-top: 40px;
-  margin-left: 20px;
-  color: #eee;
-}
-
-.member-name {
-  color: #eee;
-}
-
-label {
-  color: #eee;
-}
-
-p {
-  color: #eee;
-}
-
-#input {
-  margin-left: 20px;
-}
-
->>>>>>> 1703b9666b138400dd364af31b3fd7bedceb1bf0
 .menu {
   margin-top: 20px;
   margin-left: 20px;
 }
-<<<<<<< HEAD
 ​
 .card-img-top {
   padding: 50px;
@@ -71,13 +35,6 @@ p {
 #input{
   width: 285px;
 }
-=======
-
-.card-img-top {
-  padding: 50px;
+#savedBtns{
+  color: white;
 }
-
-.card {
-  margin-top: 20px;
-}
->>>>>>> 1703b9666b138400dd364af31b3fd7bedceb1bf0
