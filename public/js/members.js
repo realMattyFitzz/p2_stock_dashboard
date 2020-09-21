@@ -25,188 +25,6 @@ $(document).ready(function () {
       });
     });
   });
-<<<<<<< HEAD
-});
-$("#companyBtns").on("click", ".compButton", function (e) { 
-  $("#saveBtn").html("");
-  e.preventDefault();
-  const companySymbol = ($(this).attr("data-symbol"));
-  const companyName = ($(this).attr("data-name"));
-  const companyType = ($(this).attr("data-type"))
-  const companyCurrency = ($(this).attr("data-currency"))
-  
-  $.ajax({
-    url: "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=" + companySymbol + "&apikey=" + apiKey2,
-    method: "GET"
-  }).then(function (response) {
-    console.log(response)
-    const stocks = response["Time Series (Daily)"];
-    const stockData = sanitizeStockData(stocks);
-    const labels = Object.keys(stockData).reverse();
-    
-    const vals = labels.map((month) => {
-      
-      const stocks = stockData[month];
-      
-      const averageCloseValue =
-      stocks.reduce((x, y) => ({ close: x.close + y.close }), {
-        close: 0,
-      }).close / stocks.length;
-  
-      return averageCloseValue.toFixed(2);
-    });
-  
-    const ctx = document.getElementById("canvas").getContext("2d");
-    config.data.labels = labels;
-    config.data.datasets.splice(0, 1);
-    config.data.datasets.push({
-      label: companyName,
-      backgroundColor: "rgba(75,192,192,0.4)",
-      borderColor: "rgba(75,192,192,1)",
-      data: vals,
-      fill: false,
-    });
-    window.myLine = new Chart(ctx, config);
-    
-    
-    $("#companyName").text("Company Name: " + companyName)
-    $("#companySymbol").text("Company Symbol: " + companySymbol)
-    $("#companyType").text("Stock Type: " + companyType)
-    $("#companyCurrency").text("Type of Currency: " + companyCurrency)
-    
-    let saveBtn = $("<button>").text(`Save ${companyName} To Favorites!`)
-    saveBtn.addClass("btn btn-dark saveToFavorites")
-    saveBtn.attr("data-saveToFavoritsCN", companyName)
-    saveBtn.attr("data-saveToFavoritsCS", companySymbol)
-    saveBtn.attr("data-saveToFavoritsCT", companyType)
-    saveBtn.attr("data-saveToFavoritsCC", companyCurrency)
-    $("#saveBtn").append(saveBtn)
-    
-  });
-  
-})
-$("#saveBtn").on("click", ".saveToFavorites", function(e){
-  $("#companyBtns").html("");
-  $("#saveBtn").html("");
-  const companyName = ($(this).attr("data-saveToFavoritsCN"));
-  const companySymbol = ($(this).attr("data-saveToFavoritsCS"));
-  const companyType = ($(this).attr("data-saveToFavoritsCT"))
-  const companyCurrency = ($(this).attr("data-saveToFavoritsCC"))
-  
-  $.get("/api/user_data").then(function(data){
-    const newStockSave = {
-      emails: data.email,
-      symbol: companySymbol,
-      stockName: companyName,
-      stockType: companyType,
-      stockCurrency: companyCurrency
-    }
-    $.ajax("/api/favoriteStocks", {
-      type: "POST",
-      data: newStockSave
-    }).then(function(){
-    })
-  }) 
-  location.reload();
-});
-$("#savedBtns").on("click", ".savedInfoPull", function(e){
-  e.preventDefault()
-  const companyName = ($(this).attr("data-renderFavoritesCN"));
-  const companySymbol = ($(this).attr("data-renderFavoritesCS"));
-  const companyType = ($(this).attr("data-renderFavoritesCT"))
-  const companyCurrency = ($(this).attr("data-renderFavoritesCC"))
-console.log(companyName, companySymbol, companyType, companyCurrency)
-  $.ajax({
-    url: "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=" + companySymbol + "&apikey=" + apiKey2,
-    method: "GET"
-  }).then(function(response){
-    console.log(response)
-    //Graph starts here
-    const stocks = response["Time Series (Daily)"];
-    const stockData = sanitizeStockData(stocks);
-    const labels = Object.keys(stockData).reverse();
-    
-    const vals = labels.map((month) => {
-      
-      const stocks = stockData[month];
-      
-      const averageCloseValue =
-      stocks.reduce((x, y) => ({ close: x.close + y.close }), {
-        close: 0,
-      }).close / stocks.length;
-  
-      return averageCloseValue.toFixed(2);
-    });
-  
-    const ctx = document.getElementById("canvas").getContext("2d");
-    config.data.labels = labels;
-    config.data.datasets.splice(0, 1);
-    config.data.datasets.push({
-      label: companyName,
-      backgroundColor: "rgba(75,192,192,0.4)",
-      borderColor: "rgba(75,192,192,1)",
-      data: vals,
-      fill: false,
-    });
-    window.myLine = new Chart(ctx, config);
-    //Graph ends here
-    $("#companyName").text("Company Name: " + companyName)
-    $("#companySymbol").text("Company Symbol: " + companySymbol)
-    $("#companyType").text("Stock Type: " + companyType)
-    $("#companyCurrency").text("Type of Currency: " + companyCurrency)
-    let deleteBtn = $("<button>").text(`Delete ${companyName} From Favorites!`)
-    deleteBtn.addClass("btn btn-dark deleteFromFavorites")
-    deleteBtn.attr("data-deleteFromFavoritsCN", companyName)
-    deleteBtn.attr("data-deleteFromFavoritsCS", companySymbol)
-    deleteBtn.attr("data-deleteFromFavoritsCT", companyType)
-    deleteBtn.attr("data-deleteFromFavoritsCC", companyCurrency)
-    $("#deleteBtn").append(deleteBtn)
-  })
-})
-$("#deleteBtn").on("click", ".deleteFromFavorites", function(e){
-  e.preventDefault();
-  const companyName = ($(this).attr("data-deleteFromFavoritsCN"));
-  console.log(companyName);
-      
-      $.ajax("/api/favoriteStocks/" + companyName, {
-        method: "DELETE",
-      }).then(function(){
-        
-      })
-      location.reload();
-});
-function appendSavedBtns(){
-  $.ajax("/api/favoriteStocks", {
-    type: "GET"
-  }).then(function(response){
-    
-    $.each(response,function(index, value){
-      let companyName = response[index].stockName
-      let companySymbol = response[index].symbol
-      let companyType = response[index].stockType
-      let companyCurrency = response[index].stockCurrency
-      const favorites = $("<button>").text(companyName)
-      favorites.addClass("btn btn-dark savedInfoPull")
-      favorites.attr("data-renderFavoritesCN", companyName)
-      favorites.attr("data-renderFavoritesCS", companySymbol)
-      favorites.attr("data-renderFavoritesCT", companyType)
-      favorites.attr("data-renderFavoritesCC", companyCurrency)
-      $("#savedBtns").append(favorites)
-      
-    });
-  })
-}
-appendSavedBtns();
-function sanitizeStockData(stocks) {
-  const stockData = {};
-  for (date in stocks) {
-    const stock = stocks[date];
-    //moment gives us the current month
-    const month = moment(date).format("MMMM");
-    // If month does not exist in stockData set it to empty array
-    if (stockData[month] === undefined) {
-      stockData[month] = [];
-=======
   $("#companyBtns").on("click", ".compButton", function (e) {
     $("#saveBtn").html("");
     e.preventDefault();
@@ -395,35 +213,14 @@ function sanitizeStockData(stocks) {
         volume: +stock["5. volume"],
         date: date,
       });
->>>>>>> 2dcf55b1bb9d613d98354f8da515d06eeedf5eb9
     }
     return stockData;
   }
-<<<<<<< HEAD
-  return stockData;
-}
-const config = {
-  type: "line",
-  data: {
-    labels: [],
-    datasets: [],
-  },
-  options: {
-    responsive: true,
-    title: {
-      display: true,
-      text: "Average Stock Prices Over 6 Months",
-    },
-    tooltips: {
-      mode: "index",
-      intersect: false,
-=======
   const config = {
     type: "line",
     data: {
       labels: [],
       datasets: [],
->>>>>>> 2dcf55b1bb9d613d98354f8da515d06eeedf5eb9
     },
     options: {
       responsive: true,
@@ -460,10 +257,5 @@ const config = {
         ],
       },
     },
-<<<<<<< HEAD
-  },
-};
-=======
   };
->>>>>>> 2dcf55b1bb9d613d98354f8da515d06eeedf5eb9
 });
