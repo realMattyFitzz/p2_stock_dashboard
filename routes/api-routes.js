@@ -86,23 +86,10 @@ module.exports = function (app) {
   })
 
   // Route to delete a favorite stock, keyed to username(email) and stock symbol
-  app.delete("/api/favoriteStocks", (req, res) => {
+  app.delete("/api/favoriteStocks/:stockName", (req, res) => {
     db.FavoriteStock.destroy({
       where: { 
-        emails: req.body.emails,
-        symbol: req.body.symbol
-      }
-    }).then(() => {
-      res.status(200);
-    })
-  })
-
-  // Route to delete a favorite stock, keyed to username(email) and stock symbol
-  app.delete("/api/favoriteStocks", (req, res) => {
-    db.FavoriteStock.destroy({
-      where: { 
-        emails: req.body.emails,
-        symbol: req.body.symbol
+        stockName: req.params.stockName
       }
     }).then(() => {
       res.status(200);

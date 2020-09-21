@@ -110,7 +110,8 @@ $("#saveBtn").on("click", ".saveToFavorites", function(e){
     
   })
   
-})
+});
+
 $("#savedBtns").on("click", ".savedInfoPull", function(e){
   $("#saveBtn").html("");
   e.preventDefault()
@@ -164,9 +165,33 @@ console.log(companyName, companySymbol, companyType, companyCurrency)
     deleteBtn.attr("data-deleteFromFavoritsCS", companySymbol)
     deleteBtn.attr("data-deleteFromFavoritsCT", companyType)
     deleteBtn.attr("data-deleteFromFavoritsCC", companyCurrency)
-    $("#saveBtn").append(deleteBtn)
+    $("#deleteBtn").append(deleteBtn)
   })
 })
+
+$("#deleteBtn").on("click", ".deleteFromFavorites", function(e){
+  e.preventDefault();
+  const companyName = ($(this).attr("data-deleteFromFavoritsCN"));
+  console.log(companyName);
+
+  // $.get("/api/favoriteStocks").then(function(data){
+  //   console.log(data)
+    
+    // $.each(data, function(index, value){
+    //   let id = data[index].id;
+    //   let companyName = data[index].stockName;
+    // })
+    
+    $.ajax("/api/favoriteStocks/" + companyName, {
+      method: "DELETE",
+    }).then(function(){
+      console.log("You have successfully deleted " + companyName + "from favorites!")
+    })
+  //})
+
+  
+
+});
 
 function appendSavedBtns(){
   $.ajax("/api/favoriteStocks", {
