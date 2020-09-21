@@ -1,22 +1,22 @@
 // Model for favoriteStock table
 module.exports = function (sequelize, DataTypes) {
     const FavoriteStock = sequelize.define("FavoriteStock", {
-        email: {
+        emails: {
             type: DataTypes.STRING,
-            allowNull: false,
-            unique: true,
-            validate: {
-                isEmail: true
-            }
+            unique: false
         },
         symbol: {
-            type: DataTypes.STRING,
-            allowNull: false
+            type: DataTypes.STRING, 
         },
         stockName: {
             type: DataTypes.STRING,
-            allowNull: false
         },
+        stockType: {
+            type: DataTypes.STRING,
+        },
+        stockCurrency: {
+            type: DataTypes.STRING,
+        }
     });
     // Method stored on favoriteStock model checks if currently logged-in user (email) matches the "email" field of the current row
     FavoriteStock.prototype.isCurrentUser = (user) => {

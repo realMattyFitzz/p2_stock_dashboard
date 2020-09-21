@@ -5,6 +5,7 @@ form.main {
   margin-top: 50px;
   
 }
+<<<<<<< HEAD
 title {
   font-family: 'Roboto Mono', monospace;
 }
@@ -67,6 +68,8 @@ footer {
 
 
 
+=======
+>>>>>>> e20b0011d17dce70543d1e95e1a0819fe2e8e9ad
 canvas {
   -moz-user-select: none;
   -webkit-user-select: none;
@@ -75,6 +78,7 @@ canvas {
 body {
   background: black;
 }
+<<<<<<< HEAD
 ​
 body {
   background: black;
@@ -82,10 +86,14 @@ body {
 
 
 h1 {
+=======
+​#pageTitle{
+>>>>>>> e20b0011d17dce70543d1e95e1a0819fe2e8e9ad
   margin-top: 40px;
   margin-left: 20px;
-  color: #eee;
+  color:white;
 }
+<<<<<<< HEAD
 ​
 .form-control {
   margin-left: 20px;
@@ -115,29 +123,47 @@ p {
 }
 
 
+=======
+.form-control {
+  margin-left: 20px;
+}
+>>>>>>> e20b0011d17dce70543d1e95e1a0819fe2e8e9ad
 .menu {
   margin-top: 20px;
   margin-left: 20px;
 }
+<<<<<<< HEAD
 
 ​
+=======
+>>>>>>> e20b0011d17dce70543d1e95e1a0819fe2e8e9ad
 .card-img-top {
   padding: 50px;
 }
-​
 .card{
     margin-top: 20px;
 }
 #input{
   width: 285px;
 }
+<<<<<<< HEAD
 
 
 .card-img-top {
   padding: 50px;
+=======
+#savedBtns{
+  color: white;
+>>>>>>> e20b0011d17dce70543d1e95e1a0819fe2e8e9ad
 }
-
-.card {
-  margin-top: 20px;
+.btn-group{
+  display: block;
+  text-align: center;
 }
+.btn-group button:not(:last-child) {
+  border-bottom: none; /* Prevent double borders */
+}
+<<<<<<< HEAD
 
+=======
+>>>>>>> e20b0011d17dce70543d1e95e1a0819fe2e8e9ad

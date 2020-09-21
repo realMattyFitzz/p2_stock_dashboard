@@ -31,20 +31,20 @@ app.set("view engine", "handlebars");
 require("./routes/html-routes.js")(app);
 require("./routes/api-routes.js")(app);
 
-app.get("/api/symbols", async function (req, res) {
-  res.setHeader("Content-Type", "application/json");
-  fs.createReadStream(path.resolve(dataPath, "symbol_search.json")).pipe(res);
-});
+// app.get("/api/symbols", async function (req, res) {
+//   res.setHeader("Content-Type", "application/json");
+//   fs.createReadStream(path.resolve(dataPath, "symbol_search.json")).pipe(res);
+// });
 
-app.get("/api/stocks", async function (req, res) {
-  res.setHeader("Content-Type", "application/json");
-  fs.createReadStream(path.resolve(dataPath, "company_stock.json")).pipe(res);
-});
+// app.get("/api/stocks", async function (req, res) {
+//   res.setHeader("Content-Type", "application/json");
+//   fs.createReadStream(path.resolve(dataPath, "company_stock.json")).pipe(res);
+// });
 
-app.get("/api/details", async function (req, res) {
-  res.setHeader("Content-Type", "application/json");
-  fs.createReadStream(path.resolve(dataPath, "company_details.json")).pipe(res);
-});
+// app.get("/api/details", async function (req, res) {
+//   res.setHeader("Content-Type", "application/json");
+//   fs.createReadStream(path.resolve(dataPath, "company_details.json")).pipe(res);
+// });
 
 // Syncing our database and logging a message to the user upon success
 db.sequelize.sync().then(() => {
