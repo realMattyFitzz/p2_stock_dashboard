@@ -1,19 +1,56 @@
 form.signup,
-form.login {
+form.login, 
+form.members,
+form.main {
   margin-top: 50px;
 }
-canvas {
+
+h1 {
+  text-align: center;
+  color: white;
+  font-family: 'Roboto Mono', monospace;
+  margin-top: 50px;
+  
+}
+h2{
+  color: gray;
+  text-decoration: underline;
+  font-family: 'Roboto Mono', monospace;
+  margin-left: 20px;
+
+}
+#canvas {
   -moz-user-select: none;
   -webkit-user-select: none;
   -ms-user-select: none;
+  background-color: black;
+  border-color: lime;
+  
+ 
+  
 }
 body {
   background: black;
+  font-family: 'Roboto Mono', monospace;
+}
+i {
+  color: lime;
+}
+
+footer {
+  text-align: center;
+  color:lightgray;
+}
+
+#submit {
+  margin-left: 20px;
 }
 ​#pageTitle{
+  font-family: 'Roboto Mono', monospace;
   margin-top: 40px;
   margin-left: 20px;
   color:white;
+
 }
 .form-control {
   margin-left: 20px;
@@ -27,9 +64,13 @@ body {
 }
 .card{
     margin-top: 20px;
+    background-color: black;
+    color: white;
 }
 #input{
   width: 285px;
+  background-color: black;
+  color: white;
 }
 #savedBtns{
   color: white;
