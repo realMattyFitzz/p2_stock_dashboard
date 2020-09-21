@@ -142,8 +142,8 @@ $(document).ready(function () {
       config.data.datasets.splice(0, 1);
       config.data.datasets.push({
         label: companyName,
-        backgroundColor: "rgba(75,192,192,0.4)",
-        borderColor: "rgba(75,192,192,1)",
+        backgroundColor: "rgba(0, 255, 0, 1)",
+        borderColor: "rgba(0, 255, 0, 1)",
         data: vals,
         fill: false,
       });
@@ -226,6 +226,9 @@ $(document).ready(function () {
       responsive: true,
       title: {
         display: true,
+        labels: {
+          fontColor: "white"
+        },
         text: "Average Stock Prices Over 6 Months",
       },
       tooltips: {
@@ -240,6 +243,9 @@ $(document).ready(function () {
         xAxes: [
           {
             display: true,
+            gridLines: {
+              color: "#FFFFFF"
+            },
             scaleLabel: {
               display: true,
               labelString: "Month",
@@ -249,8 +255,12 @@ $(document).ready(function () {
         yAxes: [
           {
             display: true,
+            gridLines: {
+              color: "#FFFFFF"
+            },
             scaleLabel: {
               display: true,
+              color: "#FFFFFF",
               labelString: "Value",
             },
           },
