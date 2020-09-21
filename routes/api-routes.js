@@ -81,7 +81,6 @@ module.exports = function (app) {
       }
     }).then((results) => {
       res.json(results);
-      res.render("members", )
     })
   })
 
