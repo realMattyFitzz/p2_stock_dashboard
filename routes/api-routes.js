@@ -59,83 +59,42 @@ module.exports = function (app) {
       // Else, post the body of the request to the 'FavoriteStock' table
     } else {
       db.FavoriteStock.create({
-        email: req.body.email,
+        emails: req.body.emails,
         symbol: req.body.symbol,
-        stockName: req.body.stockName
+        stockName: req.body.stockName,
+        stockType: req.body.stockType,
+        stockCurrency: req.body.stockCurrency
       }).then(() => {
         res.status(200);
-      })
+      }).catch((err) => {
+        console.log(err)
+        res.status(401).json(err);
+    });
     }
   })
 
   // Route for reading User's favorite stocks
   app.get("/api/favoriteStocks", (req, res) => {
     db.FavoriteStock.findAll({
-       attributes: ["stockName", "symbol"],
       where: {
-        email: req.body.email
+        emails: req.user.email
       }
     }).then((results) => {
       res.json(results);
-      res.render("members", )
     })
   })
 
   // Route to delete a favorite stock, keyed to username(email) and stock symbol
-  app.delete("/api/favoriteStocks", (req, res) => {
+  app.delete("/api/favoriteStocks/:stockName", (req, res) => {
     db.FavoriteStock.destroy({
       where: { 
-        email: req.body.email,
-        symbol: req.body.symbol
+        stockName: req.params.stockName
       }
     }).then(() => {
       res.status(200);
     })
   })
 
-  // Route to delete a favorite stock, keyed to username(email) and stock symbol
-  app.delete("/api/favoriteStocks", (req, res) => {
-    db.FavoriteStock.destroy({
-      where: { 
-        email: req.body.email,
-        symbol: req.body.symbol
-      }
-    }).then(() => {
-      res.status(200);
-    })
-  })
 
-  // Route for saving saveData
-  app.post("/api/saveData", (req, res) => {
-    // If no data is sent, return a 400 error
-    if (!req.body) {
-      res.status(400);
-      // Else, post body of request to SaveData table
-    } else {
-      db.SaveData.create({
-        email: req.body.email,
-        symbol: req.body.symbol,
-        stockName: req.body.stockName,
-        date: req.body.data,
-        open: req.body.open,
-        close: req.body.close,
-        volume: req.body.volume
-      }).then(() => {
-        res.status(200);
-      })
-    }
-  })
-
-  // Route for reading User's saveData
-  app.get("api/saveData", (req, res) => {
-    db.SaveData.findAll({
-      attributes: ["symbol", "stockName", "date", "open", "close", "volume"],
-      where: {
-        email: req.body.email
-      }
-    }).then((results) => {
-      res.json(results);
-    })
-  })
 
 };

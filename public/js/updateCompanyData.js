@@ -56,3 +56,4 @@ axios.get(companyDetailsUrl).then(function ({ data }) {
     }
   );
 });
+
