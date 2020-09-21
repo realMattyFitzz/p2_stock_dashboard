@@ -90,8 +90,8 @@ module.exports = function (app) {
       where: { 
         stockName: req.params.stockName
       }
-    }).then(() => {
-      res.status(200);
+    }).then((deleted) => {
+      res.json(deleted);
     })
   })
 

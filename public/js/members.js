@@ -170,9 +170,8 @@ $(document).ready(function () {
     $.ajax("/api/favoriteStocks/" + companyName, {
       method: "DELETE",
     }).then(function () {
-
+      location.reload();
     })
-    location.reload();
   });
   function appendSavedBtns() {
     $.ajax("/api/favoriteStocks", {
