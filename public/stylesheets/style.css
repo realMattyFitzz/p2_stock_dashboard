@@ -1,8 +1,12 @@
 form.signup,
 form.login, 
-form.members {
+form.members,
+form.main {
   margin-top: 50px;
   
+}
+title {
+  font-family: 'Roboto Mono', monospace;
 }
 
 h1 {
