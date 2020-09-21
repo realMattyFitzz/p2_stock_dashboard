@@ -3,158 +3,77 @@ form.login,
 form.members,
 form.main {
   margin-top: 50px;
-  
-}
-<<<<<<< HEAD
-title {
-  font-family: 'Roboto Mono', monospace;
 }
 
 h1 {
-  color: white;
   text-align: center;
+  color: white;
+  font-family: 'Roboto Mono', monospace;
+  margin-top: 50px;
+  
+}
+h2{
+  color: gray;
+  text-decoration: underline;
+  font-family: 'Roboto Mono', monospace;
+  margin-left: 20px;
+
+}
+#canvas {
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  background-color: black;
+  border-color: lime;
+  
+ 
+  
+}
+body {
+  background: black;
   font-family: 'Roboto Mono', monospace;
 }
-
 i {
   color: lime;
 }
 
-body {
-  background: black;
-  margin-top: 5%;
-  font-family: 'Roboto Mono', monospace;
-}
-
-h2 {
-  color: white;
-  font-family: 'Roboto Mono', monospace;
-  font-size: large
-  
-}
-.logout {
-  text-decoration: underline;
-  color: red;
-}
-.navbar {
-  padding-left: 5%;
-  margin-top: 1%;
-  
-}
-h3 {
-  color: white;
-  font-size: 40px;
-}
-
-label {
-  color: white;
-  font-family: 'Roboto Mono', monospace;
-}
-
-p {
-  color: grey
-}
-
-.logout {
-  
-  margin-left: 80%;
-  
-}
-
 footer {
   text-align: center;
-  font-size: 10px;
+  color:lightgray;
 }
 
-
-
-=======
->>>>>>> e20b0011d17dce70543d1e95e1a0819fe2e8e9ad
-canvas {
-  -moz-user-select: none;
-  -webkit-user-select: none;
-  -ms-user-select: none;
+#submit {
+  margin-left: 20px;
 }
-body {
-  background: black;
-}
-<<<<<<< HEAD
-​
-body {
-  background: black;
-}
-
-
-h1 {
-=======
 ​#pageTitle{
->>>>>>> e20b0011d17dce70543d1e95e1a0819fe2e8e9ad
+  font-family: 'Roboto Mono', monospace;
   margin-top: 40px;
   margin-left: 20px;
   color:white;
+
 }
-<<<<<<< HEAD
-​
 .form-control {
   margin-left: 20px;
 }
-​
-
-h2 {
-  margin-top: 40px;
-  margin-left: 20px;
-  color: #eee;
-}
-
-.member-name {
-  color: #eee;
-}
-
-label {
-  color: #eee;
-}
-
-p {
-  color: #eee;
-}
-
-#input {
-  margin-left: 20px;
-}
-
-
-=======
-.form-control {
-  margin-left: 20px;
-}
->>>>>>> e20b0011d17dce70543d1e95e1a0819fe2e8e9ad
 .menu {
   margin-top: 20px;
   margin-left: 20px;
 }
-<<<<<<< HEAD
-
-​
-=======
->>>>>>> e20b0011d17dce70543d1e95e1a0819fe2e8e9ad
 .card-img-top {
   padding: 50px;
 }
 .card{
     margin-top: 20px;
+    background-color: black;
+    color: white;
 }
 #input{
   width: 285px;
+  background-color: black;
+  color: white;
 }
-<<<<<<< HEAD
-
-
-.card-img-top {
-  padding: 50px;
-=======
 #savedBtns{
   color: white;
->>>>>>> e20b0011d17dce70543d1e95e1a0819fe2e8e9ad
 }
 .btn-group{
   display: block;
@@ -163,7 +82,3 @@ p {
 .btn-group button:not(:last-child) {
   border-bottom: none; /* Prevent double borders */
 }
-<<<<<<< HEAD
-
-=======
->>>>>>> e20b0011d17dce70543d1e95e1a0819fe2e8e9ad

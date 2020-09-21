@@ -25,7 +25,6 @@ $(document).ready(function(){
     });
   });
 });
-
 $("#companyBtns").on("click", ".compButton", function (e) { 
   $("#saveBtn").html("");
   e.preventDefault();
@@ -79,13 +78,11 @@ $("#companyBtns").on("click", ".compButton", function (e) {
     saveBtn.attr("data-saveToFavoritsCS", companySymbol)
     saveBtn.attr("data-saveToFavoritsCT", companyType)
     saveBtn.attr("data-saveToFavoritsCC", companyCurrency)
-
     $("#saveBtn").append(saveBtn)
     
   });
   
 })
-
 $("#saveBtn").on("click", ".saveToFavorites", function(e){
   $("#companyBtns").html("");
   $("#saveBtn").html("");
@@ -95,7 +92,6 @@ $("#saveBtn").on("click", ".saveToFavorites", function(e){
   const companyCurrency = ($(this).attr("data-saveToFavoritsCC"))
   
   $.get("/api/user_data").then(function(data){
-
     const newStockSave = {
       emails: data.email,
       symbol: companySymbol,
@@ -103,7 +99,6 @@ $("#saveBtn").on("click", ".saveToFavorites", function(e){
       stockType: companyType,
       stockCurrency: companyCurrency
     }
-
     $.ajax("/api/favoriteStocks", {
       type: "POST",
       data: newStockSave
@@ -112,7 +107,6 @@ $("#saveBtn").on("click", ".saveToFavorites", function(e){
   }) 
   location.reload();
 });
-
 $("#savedBtns").on("click", ".savedInfoPull", function(e){
   e.preventDefault()
   const companyName = ($(this).attr("data-renderFavoritesCN"));
@@ -158,7 +152,6 @@ console.log(companyName, companySymbol, companyType, companyCurrency)
     $("#companySymbol").text("Company Symbol: " + companySymbol)
     $("#companyType").text("Stock Type: " + companyType)
     $("#companyCurrency").text("Type of Currency: " + companyCurrency)
-
     let deleteBtn = $("<button>").text(`Delete ${companyName} From Favorites!`)
     deleteBtn.addClass("btn btn-dark deleteFromFavorites")
     deleteBtn.attr("data-deleteFromFavoritsCN", companyName)
@@ -168,7 +161,6 @@ console.log(companyName, companySymbol, companyType, companyCurrency)
     $("#deleteBtn").append(deleteBtn)
   })
 })
-
 $("#deleteBtn").on("click", ".deleteFromFavorites", function(e){
   e.preventDefault();
   const companyName = ($(this).attr("data-deleteFromFavoritsCN"));
@@ -181,7 +173,6 @@ $("#deleteBtn").on("click", ".deleteFromFavorites", function(e){
       })
       location.reload();
 });
-
 function appendSavedBtns(){
   $.ajax("/api/favoriteStocks", {
     type: "GET"
@@ -203,9 +194,7 @@ function appendSavedBtns(){
     });
   })
 }
-
 appendSavedBtns();
-
 function sanitizeStockData(stocks) {
   const stockData = {};
   for (date in stocks) {
@@ -227,7 +216,6 @@ function sanitizeStockData(stocks) {
   }
   return stockData;
 }
-
 const config = {
   type: "line",
   data: {
@@ -270,5 +258,4 @@ const config = {
     },
   },
 };
-
 });
