@@ -64,8 +64,8 @@ module.exports = function (app) {
         stockName: req.body.stockName,
         stockType: req.body.stockType,
         stockCurrency: req.body.stockCurrency
-      }).then(() => {
-        res.status(200);
+      }).then((dbFavoriteStock) => {
+        res.json(dbFavoriteStock);
       }).catch((err) => {
         console.log(err)
         res.status(401).json(err);
@@ -90,8 +90,8 @@ module.exports = function (app) {
       where: { 
         stockName: req.params.stockName
       }
-    }).then(() => {
-      res.status(200);
+    }).then((deleted) => {
+      res.json(deleted);
     })
   })
 
