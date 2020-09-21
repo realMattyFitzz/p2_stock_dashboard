@@ -2,7 +2,7 @@
   "name": "p2_stock_dashboard",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
+  "main": "script.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
@@ -11,7 +11,6 @@
     "type": "git",
     "url": "git+https://github.com/jmuncrief/p2_stock_dashboard.git"
   },
-  "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
@@ -19,22 +18,15 @@
   },
   "homepage": "https://github.com/jmuncrief/p2_stock_dashboard#readme",
   "dependencies": {
-<<<<<<< HEAD
     "axios": "^0.20.0",
-=======
->>>>>>> 1703b9666b138400dd364af31b3fd7bedceb1bf0
     "bcryptjs": "^2.4.3",
     "express": "^4.17.1",
     "express-handlebars": "^5.1.0",
     "express-session": "^1.17.1",
-<<<<<<< HEAD
-    "fs": "0.0.1-security",
     "mysql": "^2.18.1",
-    "mysql2": "^2.2.1",
-=======
+    "mysql2": "^2.2.2",
+    "fs": "0.0.1-security",
     "handlebars": "^4.7.6",
-    "mysql2": "^2.1.0",
->>>>>>> 1703b9666b138400dd364af31b3fd7bedceb1bf0
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",
     "path": "^0.12.7",
