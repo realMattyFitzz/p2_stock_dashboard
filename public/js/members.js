@@ -60,8 +60,8 @@ $("#companyBtns").on("click", ".compButton", function (e) {
     config.data.datasets.splice(0, 1);
     config.data.datasets.push({
       label: companyName,
-      backgroundColor: "rgba(75,192,192,0.4)",
-      borderColor: "rgba(75,192,192,1)",
+      backgroundColor: "rgba(0, 225, 0, 1)",
+      borderColor: "rgba(0, 225, 0, 1)",
       data: vals,
       fill: false,
     });
@@ -108,9 +108,9 @@ $("#saveBtn").on("click", ".saveToFavorites", function(e){
       type: "POST",
       data: newStockSave
     }).then(function(){
+      location.reload();
     })
   }) 
-  location.reload();
 });
 
 $("#savedBtns").on("click", ".savedInfoPull", function(e){
@@ -147,8 +147,8 @@ console.log(companyName, companySymbol, companyType, companyCurrency)
     config.data.datasets.splice(0, 1);
     config.data.datasets.push({
       label: companyName,
-      backgroundColor: "rgba(75,192,192,0.4)",
-      borderColor: "rgba(75,192,192,1)",
+      backgroundColor: "rgba(0, 225, 0, 1)",
+      borderColor: "rgba(0, 225, 0, 1)",
       data: vals,
       fill: false,
     });
@@ -170,6 +170,7 @@ console.log(companyName, companySymbol, companyType, companyCurrency)
 })
 
 $("#deleteBtn").on("click", ".deleteFromFavorites", function(e){
+
   e.preventDefault();
   const companyName = ($(this).attr("data-deleteFromFavoritsCN"));
   console.log(companyName);
@@ -177,9 +178,8 @@ $("#deleteBtn").on("click", ".deleteFromFavorites", function(e){
       $.ajax("/api/favoriteStocks/" + companyName, {
         method: "DELETE",
       }).then(function(){
-        
+        location.reload();
       })
-      location.reload();
 });
 
 function appendSavedBtns(){
@@ -234,6 +234,9 @@ const config = {
     labels: [],
     datasets: [],
   },
+  gridLines: {
+    color: "#FFFFFF"
+  },
   options: {
     responsive: true,
     title: {
@@ -252,6 +255,9 @@ const config = {
       xAxes: [
         {
           display: true,
+          gridLines: {
+            color: "#FFFFFF"
+          },
           scaleLabel: {
             display: true,
             labelString: "Month",
@@ -261,6 +267,9 @@ const config = {
       yAxes: [
         {
           display: true,
+          gridLines: {
+            color: "#FFFFFF"
+          },
           scaleLabel: {
             display: true,
             labelString: "Value",
